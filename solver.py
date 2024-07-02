@@ -14,9 +14,9 @@ def KuramotoOmega(omega,phi_0,  K:list, phi:list):
 def Integrator(resolution, time, omegas, phis, K):
     phi_data = []
     omega_data = []
-    this_Time = 0
-    TimeAxis = np.linspace(0, int(time), int(time/resolution)+1)
-    while (this_Time<=time):
+    TimeAxis = np.linspace(0, int(time), int(time/resolution))
+    for tTime in range(0,int(time/resolution)):
+        this_Time = tTime*resolution
         print("Working...")
         phi_data_i = []
         omega_data_i = []
