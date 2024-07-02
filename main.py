@@ -4,11 +4,11 @@ import solver
 def main():
     ### Ну тут чето надо написать, но я хз пока что...
     resolution = 10**(-2)
-    duration = 10**(1)
-    omegas = [10.0,-10.0]
+    duration = 10**(0)*2
+    omegas = [10.0,10.0]
     phis = [np.pi, np.pi*0.75]
-    k_arr = [[2,5],
-             [5,2]]
+    k_arr = [[0, 10],
+             [15, 0]]
     TimeAxis, Phi_Axis, Omega_Axis = solver.Integrator(resolution, duration, omegas, phis, k_arr)
     Omega_Axis = (Omega_Axis)
     Phi_Axis = (Phi_Axis)
