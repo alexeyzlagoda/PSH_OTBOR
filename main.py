@@ -1,19 +1,19 @@
 import matplotlib.pyplot as plt
 import numpy as np
-import solver
+import solver2 as solver
 def main():
     ### Ну тут чето надо написать, но я хз пока что...
     resolution = 10**(-4)
-    duration = 10**(1)*2
+    duration = 10
     omegas = [5.0,2.0]
-    phis = [np.pi,0]
+    phis = [np.pi,np.pi/2]
     k_arr = [[5,5],
              [5,5]]
         
     TimeAxis, Phi_Axis, Omega_Axis = solver.Integrator(resolution, duration, omegas, phis, k_arr)
-    Omega_Axis = (Omega_Axis)
-    Phi_Axis = (Phi_Axis)
-    Phi_Axis = np.sin(Phi_Axis)
+  
+    print(Phi_Axis)
+    
     plt.plot(TimeAxis,(Omega_Axis)[0], color = "red", label = "Omega 1")
     plt.plot(TimeAxis,(Omega_Axis)[1], color = "blue", label = "Omega 2")
     '''
@@ -25,6 +25,7 @@ def main():
     '''
     plt.title("Зависимость угловой скорости от времени")
     plt.legend()
+    plt.savefig('Omegas.pdf')
     plt.show()
 
     plt.plot(TimeAxis,(Phi_Axis)[0], color = "red", label = "Phi 1")
@@ -38,5 +39,7 @@ def main():
     '''
     plt.title("Зависимость угла  от времени")
     plt.legend()
+    plt.savefig('Phis.pdf')
     plt.show()
+
 main()

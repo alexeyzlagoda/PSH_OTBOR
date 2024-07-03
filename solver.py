@@ -1,13 +1,13 @@
 import numpy as np
 import scipy.integrate
-
+from tqdm import tqdm
 from math import sin
 
 def Kuramoto(dt,omega,phi_0,  K_I:list, phi:list):
     summa = 0
     for i, ph in zip(K_I,phi):
         summa +=i*sin(ph-phi_0)
-    return (omega + summa/(len(phi)+1))*dt
+    return (omega + summa/(len(phi)+1))
 
 
 
@@ -18,13 +18,10 @@ def KuramotoOmega(omega,phi_0,  K:list, phi:list):
     return (omega + summa/(len(phi)+1))
 
 
-
-
-
 def Integrator(resolution, duration, omegas, phis, K):
     Phi_data = []
     Omega_data = []
-    for iteration in range(int(duration/resolution)):
+    for iteration in tqdm(range(int(duration/resolution))):
         Phi_data_i = []
         Omega_data_i = []
         Time = iteration*resolution
@@ -35,7 +32,7 @@ def Integrator(resolution, duration, omegas, phis, K):
                 Kuramoto_Phis = phis[:i]
             else:
                 Kuramoto_Phis = np.concatenate((phis[:i], phis[i+1:]))
-            print(phis[i])
+            #print(phis[i])
             phis[i] += scipy.integrate.quad(Kuramoto, Time-resolution, Time, args=(omega,phis[i], thisK,Kuramoto_Phis))[0]
             Phi_data_i.append(phis[i])
             Omega_data_i.append(KuramotoOmega(omega,phis[i], thisK,Kuramoto_Phis))
