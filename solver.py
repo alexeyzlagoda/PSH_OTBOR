@@ -1,6 +1,6 @@
 import numpy as np
 import scipy.integrate
-from tqdm import tqdm
+#from tqdm import tqdm
 from math import sin
 
 def Kuramoto(dt,omega,phi_0,  K_I:list, phi:list):
@@ -21,7 +21,7 @@ def KuramotoOmega(omega,phi_0,  K:list, phi:list):
 def Integrator(resolution, duration, omegas, phis, K):
     Phi_data = []
     Omega_data = []
-    for iteration in tqdm(range(int(duration/resolution))):
+    for iteration in range(int(duration/resolution)):
         Phi_data_i = []
         Omega_data_i = []
         Time = iteration*resolution

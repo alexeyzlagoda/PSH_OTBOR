@@ -1,6 +1,6 @@
 import numpy as np
 import scipy.integrate
-from tqdm import tqdm
+#from tqdm import tqdm
 from math import sin
 
 def KuramotoOmega(phi, t, omega,  K):
